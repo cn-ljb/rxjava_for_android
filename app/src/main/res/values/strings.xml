@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RxJava_For_Android</string>
+    <string name="btn_net_request">网络请求</string>
+    <string name="request_get">Get请求</string>
+    <string name="request_post">Post请求</string>
+    <string name="request_put">Put请求</string>
+    <string name="request_delete">Delete请求</string>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_get"
+        style="@style/style_btn"
+        android:text="@string/request_get" />
+
+    <Button
+        android:id="@+id/btn_post"
+        style="@style/style_btn"
+        android:text="@string/request_post" />
+
+    <Button
+        android:id="@+id/btn_put"
+        style="@style/style_btn"
+        android:text="@string/request_put" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        style="@style/style_btn"
+        android:text="@string/request_delete" />
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp" />
+</LinearLayout>
