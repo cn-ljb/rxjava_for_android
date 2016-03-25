@@ -20,17 +20,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
+    compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:appcompat-v7:23.2.0'
-
-    compile 'com.jakewharton:butterknife:7.0.1'     //一个View的注解框架
-    compile 'io.reactivex:rxjava:1.1.0'             //RxJava
-    compile 'io.reactivex:rxandroid:1.1.0'          //RxAndroid
-    compile 'com.trello:rxlifecycle:0.4.0'          //Rx lifecycle
-    compile 'com.trello:rxlifecycle-components:0.4.0'
-    compile 'com.squareup.okhttp:okhttp:2.7.2'      //OkHttp
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'com.f2prateek.rx.preferences:rx-preferences:1.0.1'
+    compile 'com.squareup.okhttp:okhttp:2.7.2'
     compile 'com.squareup.okio:okio:1.6.0'
-    compile 'com.google.code.gson:gson:2.5'         //Gson
-
+    compile 'com.google.code.gson:gson:2.5'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    compile 'com.trello:rxlifecycle:0.4.0'
+    compile 'com.trello:rxlifecycle-components:0.4.0'
 }

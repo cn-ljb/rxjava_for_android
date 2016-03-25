@@ -5,4 +5,22 @@
     <string name="request_post">Post请求</string>
     <string name="request_put">Put请求</string>
     <string name="request_delete">Delete请求</string>
+    <string name="btn_not_more_click">View防止连续点击</string>
+    <string name="des_demo_net">RxJava+OkHttp实现的网络请求Demo</string>
+    <string name="des_demo_not_more_click">防止连续点击多次触发View的点击事件Demo,3秒内按钮只能点击1次</string>
+    <string name="click">点击</string>
+    <string name="btn_checkbox_state_update">check_box状态实时跟新</string>
+    <string name="open_xx_function">开启某项功能</string>
+    <string name="des_demo_check1">模拟开启某项功能后在SharedPreferences中修改对应标记</string>
+    <string name="des_demo_check2">同意用户协议后方可登录</string>
+    <string name="login">登录</string>
+    <string name="user_protocol">用户协议</string>
+    <string name="btn_text_change">搜索关键字提醒</string>
+    <string name="des_demo_search_key_word">模拟搜索关键字提醒功能</string>
+    <string name="btn_buffer">Buffer操作符</string>
+    <string name="btn_buffer_count">buffer(count)</string>
+    <string name="des_demo_buffer_count">每统计到3次点击事件，发送一次数据</string>
+    <string name="des_demo_buffer_count_skip">输入一个字符串，将该字符串拆分两两打包发送，并跳过第三项（例如：123456 ，最后结果为：1,2 和 4,5）</string>
+    <string name="btn_buffer_count_skip">buffer(count , skip)</string>
+    <string name="input_text">请输入...</string>
 </resources>

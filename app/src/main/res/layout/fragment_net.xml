@@ -4,6 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        style="@style/style_text"
+        android:text="@string/des_demo_net" />
+
     <Button
         android:id="@+id/btn_get"
         style="@style/style_btn"

@@ -1,0 +1,71 @@
+package com.che58.ljb.rxjava.fragment.main;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.che58.ljb.rxjava.R;
+import com.che58.ljb.rxjava.fragment.BufferFragment;
+import com.che58.ljb.rxjava.fragment.CheckBoxUpdateFragment;
+import com.che58.ljb.rxjava.fragment.NetFragment;
+import com.che58.ljb.rxjava.fragment.NotMoreClickFragment;
+import com.che58.ljb.rxjava.fragment.TextChangeFragment;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+/**
+ * 主菜单Fragment
+ * Created by ljb on 2016/3/23.
+ */
+public class MainFragment extends Fragment {
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_main, null);
+        ButterKnife.bind(this, view);
+        return view;
+    }
+
+    @OnClick(R.id.btn_net)
+    void btn_net() {
+        open(new NetFragment());
+    }
+
+
+    @OnClick(R.id.btn_not_more_click)
+    void btn_not_more_click() {
+        open(new NotMoreClickFragment());
+    }
+
+    @OnClick(R.id.btn_checkbox_state_update)
+    void btn_checkbox_update() {
+        open(new CheckBoxUpdateFragment());
+    }
+
+    @OnClick(R.id.btn_text_change)
+    void btn_text_change() {
+        open(new TextChangeFragment());
+    }
+
+    @OnClick(R.id.btn_buffer)
+    void btn_buffer() {
+        open(new BufferFragment());
+    }
+
+    /**
+     * 开启新的Fragment
+     */
+    private void open(Fragment fragment) {
+        final String tag = fragment.getClass().toString();
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .addToBackStack(tag)
+                .replace(R.id.main_content, fragment, tag)
+                .commit();
+    }
+}
