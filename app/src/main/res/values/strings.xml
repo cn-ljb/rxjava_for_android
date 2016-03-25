@@ -23,4 +23,5 @@
     <string name="des_demo_buffer_count_skip">输入一个字符串，将该字符串拆分两两打包发送，并跳过第三项（例如：123456 ，最后结果为：1,2 和 4,5）</string>
     <string name="btn_buffer_count_skip">buffer(count , skip)</string>
     <string name="input_text">请输入...</string>
+    <string name="btn_zip">zip数据合并操作</string>
 </resources>

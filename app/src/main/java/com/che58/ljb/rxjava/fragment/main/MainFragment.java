@@ -10,9 +10,10 @@ import android.view.ViewGroup;
 import com.che58.ljb.rxjava.R;
 import com.che58.ljb.rxjava.fragment.BufferFragment;
 import com.che58.ljb.rxjava.fragment.CheckBoxUpdateFragment;
+import com.che58.ljb.rxjava.fragment.ZipFragment;
 import com.che58.ljb.rxjava.fragment.NetFragment;
 import com.che58.ljb.rxjava.fragment.NotMoreClickFragment;
-import com.che58.ljb.rxjava.fragment.TextChangeFragment;
+import com.che58.ljb.rxjava.fragment.DebounceFragment;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -49,13 +50,19 @@ public class MainFragment extends Fragment {
 
     @OnClick(R.id.btn_text_change)
     void btn_text_change() {
-        open(new TextChangeFragment());
+        open(new DebounceFragment());
     }
 
     @OnClick(R.id.btn_buffer)
     void btn_buffer() {
         open(new BufferFragment());
     }
+
+    @OnClick(R.id.btn_zip)
+    void btn_merage(){
+        open(new ZipFragment());
+    }
+
 
     /**
      * 开启新的Fragment

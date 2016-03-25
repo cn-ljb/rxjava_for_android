@@ -35,7 +35,7 @@ import rx.schedulers.Schedulers;
  * RxJava实现搜索关键字推荐Demo
  * Created by ljb on 2016/3/24.
  */
-public class TextChangeFragment extends RxFragment {
+public class DebounceFragment extends RxFragment {
 
     @Bind(R.id.et_search)
     EditText et_search;
@@ -112,7 +112,7 @@ public class TextChangeFragment extends RxFragment {
         return new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(TextChangeFragment.this.getActivity(), "搜索:"+mAdapter.getItem(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(DebounceFragment.this.getActivity(), "搜索:"+mAdapter.getItem(position), Toast.LENGTH_SHORT).show();
             }
         };
     }

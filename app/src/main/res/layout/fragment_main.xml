@@ -33,5 +33,10 @@
             style="@style/style_btn"
             android:text="@string/btn_buffer" />
 
+        <Button
+            android:id="@+id/btn_zip"
+            style="@style/style_btn"
+            android:text="@string/btn_zip" />
+
     </LinearLayout>
 </ScrollView>
