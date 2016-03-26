@@ -23,14 +23,16 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
-import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
 /**
- * Zip数据合并操作
- * Created by ljb on 2016/3/25.
+ * merge操作符
+ * 可以将多个Observables的输出合并，就好像它们是一个单个的Observable一样
+ * <p/>
+ * Demo:模拟先读取(1s)本地缓存数据，再读取(3s)网络数据
+ * Created by zjh on 2016/3/26.
  */
-public class ZipFragment extends RxFragment {
+public class MergeFragment extends RxFragment {
 
     @Bind(R.id.view_load)
     ProgressWheel loadView;
@@ -41,7 +43,7 @@ public class ZipFragment extends RxFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_zip, null);
+        View view = inflater.inflate(R.layout.fragment_merge, null);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -49,20 +51,9 @@ public class ZipFragment extends RxFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getContactData();
-    }
-
-    private void getContactData() {
-        Observable.zip(
-                queryContactsFromLocation(),
-                queryContactsForNet(),
-                new Func2<List<Contacter>, List<Contacter>, List<Contacter>>() {
-                    @Override
-                    public List<Contacter> call(List<Contacter> contacters, List<Contacter> contacters2) {
-                        contacters.addAll(contacters2);
-                        return contacters;
-                    }
-                }
+        Observable.merge(
+                getDataFromLocation(),
+                getDataFromNet()
         ).compose(this.<List<Contacter>>bindToLifecycle())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -71,24 +62,24 @@ public class ZipFragment extends RxFragment {
                     public void call(List<Contacter> contacters) {
                         initPage(contacters);
                     }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+
+                    }
                 });
     }
 
     private void initPage(List<Contacter> contacters) {
         loadView.setVisibility(View.GONE);
         XgoLog.d(contacters.toString());
-        lv_list.setAdapter(new ArrayAdapter<Contacter>(getActivity(), R.layout.item_list, R.id.tv_text, contacters));
+        lv_list.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.item_list, R.id.tv_text, contacters));
     }
 
-
-    /**
-     * 模拟网络联系人列表
-     */
-    private Observable<List<Contacter>> queryContactsForNet() {
+    private Observable<List<Contacter>> getDataFromNet() {
         return Observable.create(new Observable.OnSubscribe<List<Contacter>>() {
             @Override
             public void call(Subscriber<? super List<Contacter>> subscriber) {
-
                 try {
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
@@ -101,25 +92,35 @@ public class ZipFragment extends RxFragment {
                 contacters.add(new Contacter("net:Prometheus"));
                 subscriber.onNext(contacters);
                 subscriber.onCompleted();
+
+
+                subscriber.onNext(contacters);
+                subscriber.onCompleted();
+
             }
         });
     }
 
-    /**
-     * 模拟手机本地联系人查询
-     */
-    private Observable<List<Contacter>> queryContactsFromLocation() {
+
+    private Observable<List<Contacter>> getDataFromLocation() {
         return Observable.create(new Observable.OnSubscribe<List<Contacter>>() {
             @Override
             public void call(Subscriber<? super List<Contacter>> subscriber) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-                ArrayList<Contacter> contacters = new ArrayList<>();
-                contacters.add(new Contacter("location:张三"));
-                contacters.add(new Contacter("location:李四"));
-                contacters.add(new Contacter("location:王五"));
-                subscriber.onNext(contacters);
+                List<Contacter> datas = new ArrayList<>();
+                datas.add(new Contacter("location:" + "张三"));
+                datas.add(new Contacter("location:" + "李四"));
+                datas.add(new Contacter("location:" + "王五"));
+
+                subscriber.onNext(datas);
                 subscriber.onCompleted();
             }
         });
     }
+
 }

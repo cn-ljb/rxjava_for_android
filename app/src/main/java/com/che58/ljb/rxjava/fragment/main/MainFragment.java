@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.che58.ljb.rxjava.R;
 import com.che58.ljb.rxjava.fragment.BufferFragment;
 import com.che58.ljb.rxjava.fragment.CheckBoxUpdateFragment;
+import com.che58.ljb.rxjava.fragment.MergeFragment;
 import com.che58.ljb.rxjava.fragment.ZipFragment;
 import com.che58.ljb.rxjava.fragment.NetFragment;
 import com.che58.ljb.rxjava.fragment.NotMoreClickFragment;
@@ -59,10 +60,12 @@ public class MainFragment extends Fragment {
     }
 
     @OnClick(R.id.btn_zip)
-    void btn_merage(){
+    void btn_zip(){
         open(new ZipFragment());
     }
 
+    @OnClick(R.id.btn_merge)
+    void btn_merage(){open(new MergeFragment());}
 
     /**
      * 开启新的Fragment
@@ -75,4 +78,5 @@ public class MainFragment extends Fragment {
                 .replace(R.id.main_content, fragment, tag)
                 .commit();
     }
+
 }

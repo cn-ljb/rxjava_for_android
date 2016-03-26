@@ -38,5 +38,10 @@
             style="@style/style_btn"
             android:text="@string/btn_zip" />
 
+        <Button
+            android:id="@+id/btn_merge"
+            style="@style/style_btn"
+            android:text="@string/btn_merge" />
+
     </LinearLayout>
 </ScrollView>

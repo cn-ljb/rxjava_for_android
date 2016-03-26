@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@android:color/white"
     xmlns:wheel="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,20 +7,20 @@
     <TextView
         android:id="@+id/tv_des"
         style="@style/style_text"
-        android:text="@string/des_demo_zip"
-    />
+        android:text="@string/des_demo_merge" />
+
     <ListView
         android:layout_below="@id/tv_des"
         android:id="@+id/lv_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <com.che58.ljb.rxjava.view.ProgressWheel
         android:id="@+id/view_load"
+        wheel:matProg_barColor="@color/can_login"
+        wheel:matProg_progressIndeterminate="true"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_centerInParent="true"
-        wheel:matProg_barColor="@color/can_login"
-        wheel:matProg_progressIndeterminate="true" />
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

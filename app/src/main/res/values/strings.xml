@@ -24,4 +24,7 @@
     <string name="btn_buffer_count_skip">buffer(count , skip)</string>
     <string name="input_text">请输入...</string>
     <string name="btn_zip">zip数据合并操作</string>
+    <string name="des_demo_zip">模拟读取本地和网络联系人列表，最终将两者进行组合</string>
+    <string name="btn_merge">merge操作符</string>
+    <string name="des_demo_merge">模拟网络请求中，1秒后先显示本地数据，3秒后显示网络数据</string>
 </resources>
