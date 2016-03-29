@@ -51,6 +51,10 @@ public class MergeFragment extends RxFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        mergeDemo();
+    }
+
+    private void mergeDemo() {
         Observable.merge(
                 getDataFromLocation(),
                 getDataFromNet()
@@ -92,11 +96,6 @@ public class MergeFragment extends RxFragment {
                 contacters.add(new Contacter("net:Prometheus"));
                 subscriber.onNext(contacters);
                 subscriber.onCompleted();
-
-
-                subscriber.onNext(contacters);
-                subscriber.onCompleted();
-
             }
         });
     }

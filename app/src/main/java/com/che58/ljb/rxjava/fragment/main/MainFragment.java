@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 import com.che58.ljb.rxjava.R;
 import com.che58.ljb.rxjava.fragment.BufferFragment;
 import com.che58.ljb.rxjava.fragment.CheckBoxUpdateFragment;
+import com.che58.ljb.rxjava.fragment.LoopFragment;
 import com.che58.ljb.rxjava.fragment.MergeFragment;
+import com.che58.ljb.rxjava.fragment.PublishSubjectFragment;
+import com.che58.ljb.rxjava.fragment.TimerFragment;
 import com.che58.ljb.rxjava.fragment.ZipFragment;
 import com.che58.ljb.rxjava.fragment.NetFragment;
 import com.che58.ljb.rxjava.fragment.NotMoreClickFragment;
@@ -66,6 +69,15 @@ public class MainFragment extends Fragment {
 
     @OnClick(R.id.btn_merge)
     void btn_merage(){open(new MergeFragment());}
+
+    @OnClick(R.id.btn_loop)
+    void btn_loop(){open(new LoopFragment());}
+
+    @OnClick(R.id.btn_timer)
+    void btn_timer(){open(new TimerFragment());}
+
+    @OnClick(R.id.btn_publish)
+    void btn_publish(){open(new PublishSubjectFragment());}
 
     /**
      * 开启新的Fragment

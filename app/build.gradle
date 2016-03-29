@@ -33,4 +33,5 @@ dependencies {
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
     compile 'com.trello:rxlifecycle:0.4.0'
     compile 'com.trello:rxlifecycle-components:0.4.0'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
 }

@@ -43,5 +43,20 @@
             style="@style/style_btn"
             android:text="@string/btn_merge" />
 
+        <Button
+            android:id="@+id/btn_loop"
+            style="@style/style_btn"
+            android:text="@string/btn_loop" />
+
+        <Button
+            android:id="@+id/btn_timer"
+            style="@style/style_btn"
+            android:text="@string/btn_timer" />
+
+        <Button
+            android:id="@+id/btn_publish"
+            style="@style/style_btn"
+            android:text="@string/btn_publish" />
+
     </LinearLayout>
 </ScrollView>

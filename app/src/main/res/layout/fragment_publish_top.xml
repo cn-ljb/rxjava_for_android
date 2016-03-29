@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/can_login"
+    android:orientation="vertical">
+
+    <EditText
+        android:lines="3"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_bg"
+        android:id="@+id/et_input"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="@string/input_text" />
+
+    <Button
+        android:id="@+id/btn_send"
+        style="@style/style_btn"
+        android:text="@string/send_bottom" />
+
+</LinearLayout>
