@@ -18,6 +18,7 @@ import com.che58.ljb.rxjava.fragment.ZipFragment;
 import com.che58.ljb.rxjava.fragment.NetFragment;
 import com.che58.ljb.rxjava.fragment.NotMoreClickFragment;
 import com.che58.ljb.rxjava.fragment.DebounceFragment;
+import com.che58.ljb.rxjava.rxbus.RxBusDemoFragment;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -63,21 +64,34 @@ public class MainFragment extends Fragment {
     }
 
     @OnClick(R.id.btn_zip)
-    void btn_zip(){
+    void btn_zip() {
         open(new ZipFragment());
     }
 
     @OnClick(R.id.btn_merge)
-    void btn_merage(){open(new MergeFragment());}
+    void btn_merage() {
+        open(new MergeFragment());
+    }
 
     @OnClick(R.id.btn_loop)
-    void btn_loop(){open(new LoopFragment());}
+    void btn_loop() {
+        open(new LoopFragment());
+    }
 
     @OnClick(R.id.btn_timer)
-    void btn_timer(){open(new TimerFragment());}
+    void btn_timer() {
+        open(new TimerFragment());
+    }
 
     @OnClick(R.id.btn_publish)
-    void btn_publish(){open(new PublishSubjectFragment());}
+    void btn_publish() {
+        open(new PublishSubjectFragment());
+    }
+
+    @OnClick(R.id.btn_rxbus)
+    void btn_rxbus() {
+        open(new RxBusDemoFragment());
+    }
 
     /**
      * 开启新的Fragment

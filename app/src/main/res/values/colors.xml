@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="can_login">#DF9517</color>
     <color name="not_login">#C5C0C0</color>
+    <color name="red">#eb676b</color>
+    <color name="blue">#488cef</color>
+    <color name="green">#3bc4a2</color>
+    <color name="gray">#cfcfcf</color>
 </resources>

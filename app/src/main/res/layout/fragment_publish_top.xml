@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <EditText
+        android:paddingLeft="10dp"
         android:lines="3"
         android:layout_margin="10dp"
         android:background="@drawable/shape_bg"

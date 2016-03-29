@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">RxJava_For_Android</string>
-    <string name="btn_net_request">网络请求</string>
+    <string name="btn_net_request">网络请求(rxjava+okHttp)</string>
     <string name="request_get">Get请求</string>
     <string name="request_post">Post请求</string>
     <string name="request_put">Put请求</string>
@@ -37,4 +37,7 @@
     <string name="des_demo_publish">可连接的Observable (connectable Observable)与普通的Observable差不多，不过它并不会在被订阅时开始发射数据，而是直到使用了Connect操作符时才会开始。用这种方法，你可以在任何时候让一个Observable开始发射数据。</string>
     <string name="add">添加</string>
     <string name="send_bottom">发送给底部Fragment</string>
+    <string name="msg_demo_rxbus_1">这是一个通过RxJava实现的RxBus Demo\r\n上下分别为两个Fragment , TopFragment被点击 ， 会通知BottomFragment中的两个监听者，一个监听者负责每次触发显示Tap文本，另一个监听者负责每次点击缓冲1秒统计总点击数，并显示出来</string>
+    <string name="btn_rxbus">rxbus</string>
+
 </resources>

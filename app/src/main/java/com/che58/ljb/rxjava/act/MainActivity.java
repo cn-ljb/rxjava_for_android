@@ -1,12 +1,23 @@
 package com.che58.ljb.rxjava.act;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 
 import com.che58.ljb.rxjava.R;
 import com.che58.ljb.rxjava.fragment.main.MainFragment;
+import com.che58.ljb.rxjava.rxbus.RxBus;
+import com.trello.rxlifecycle.components.support.RxFragmentActivity;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends RxFragmentActivity {
+
+    private RxBus _rxBus = null;
+
+    /**获取RxBus对象*/
+    public RxBus getRxBusSingleton() {
+        if (_rxBus == null) {
+            _rxBus = new RxBus();
+        }
+        return _rxBus;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
