@@ -1,5 +1,7 @@
 # rxjava_for_android
+
 	Android平台上使用RxJava的Demo
+<br/>
 
 <center>![](http://i.imgur.com/iWI5WxY.gif)</center>
 
