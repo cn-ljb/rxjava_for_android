@@ -21,6 +21,7 @@
     3、如何学习RxJava（耐心）
         首先请调节好学习心态，RxJava并不是一个”拿来就能用“的项目，他需要我们像学习一门新语言一样从语法-->词汇-->用法的学习过程，不要抱怨他是多么的复杂、国内资料是多么的少。毕竟它只是个不到1MB Jar包大小的库，花不了我们太多时间即可入门，我们需要做的只是摆好心态，耐心的学习。
     
+<br/><br/><br/>
 ###一、入门
    如果你还没有接触过RxJava，下面这些文章可能会帮到你：
    
@@ -44,6 +45,7 @@
 [NotRxJava懒人专用指南 ](http://www.devtf.cn/?p=323)   从代码的角度教你实现一个简易的RxJava库                       
    ——作者：Yaroslav Heriatovych  译者：Rocko  
 
+<br/><br/><br/>
 ###二、进阶
 如果你已了解RxJava基本语法，并尝试着去练习，那么现在你需要熟悉更多的操作符，并理解它们的意思，在特定的场合使用它们去编写代码。
 
@@ -80,6 +82,7 @@
 
 [（九）RxJava：RxBus](http://blog.csdn.net/qq1026291832/article/details/51006825)
 
+<br/><br/><br/>
 ###三、 其他可能对你有所帮助的资料
 
 [那些年我们错过的响应式编程](http://www.devtf.cn/?p=174)        ——很详细的介绍什么是响应式编程
@@ -98,6 +101,7 @@
 
 [Android客户端性能优化](http://blog.csdn.net/yueqian_scut/article/details/50762649#comments)
 
+<br/><br/><br/>
 ###四、学习中可能会涉及到的库
 <a>https://github.com/ReactiveX/RxJava</a>          ——RxJava核心库
 
