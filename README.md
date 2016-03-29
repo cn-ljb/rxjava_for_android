@@ -3,10 +3,8 @@
 	Android平台上使用RxJava的Demo
 <br/>
 
-<center>![](http://i.imgur.com/iWI5WxY.gif)</center>
-
-<center>![](http://i.imgur.com/vjXS2pI.gif)</center>
-
+![](http://i.imgur.com/iWI5WxY.gif)
+![](http://i.imgur.com/vjXS2pI.gif)
 
 -----------------------------------------------------------
 
