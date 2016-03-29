@@ -60,7 +60,7 @@
 [RxJava-Android-Samples ](https://github.com/kaushikgopal/RxJava-Android-Samples)                             ——kaushikgopal
 
 
-以下是本人在工作之余写的Demo，可github直接下载源码查看
+<br/>以下是本人在工作之余写的Demo
 
 [<b>rxjava-for-android</b>](https://github.com/cn-ljb/rxjava_for_android)    （诺对您有所帮助，还望star）
 
