@@ -67,8 +67,6 @@ public class Net2Fragment extends RxFragment {
                         tv_reuslt.setText("Get Error:\r\n" + throwable.getMessage());
                     }
                 });
-
-
     }
 
     @OnClick(R.id.btn_post)
