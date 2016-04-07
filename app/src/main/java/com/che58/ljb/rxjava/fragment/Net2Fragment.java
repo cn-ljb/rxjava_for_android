@@ -8,7 +8,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.che58.ljb.rxjava.R;
-import com.che58.ljb.rxjava.protocol.TestProtocol;
+import com.che58.ljb.rxjava.model.DeleteModel;
+import com.che58.ljb.rxjava.model.GetModel;
+import com.che58.ljb.rxjava.model.PostModel;
+import com.che58.ljb.rxjava.model.PutModel;
+import com.che58.ljb.rxjava.protocol2.TestProtocol;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
 import java.util.TreeMap;
@@ -20,13 +24,15 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
 /**
- * RxJava网络请求Demo
- * Created by ljb on 2016/3/23.
+ * RxJava+OkHttp+Gson
+ * Created by ljb on 2016/4/7.
  */
-public class NetFragment extends RxFragment {
-
+public class Net2Fragment extends RxFragment {
     @Bind(R.id.tv_result)
     TextView tv_reuslt;
+
+    @Bind(R.id.tv_msg)
+    TextView tv_msg;
 
     private TestProtocol mTestProtocol;
 
@@ -35,6 +41,7 @@ public class NetFragment extends RxFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_net, null);
         ButterKnife.bind(this, view);
+        tv_msg.setText(R.string.des_demo_net2);
         return view;
     }
 
@@ -47,11 +54,11 @@ public class NetFragment extends RxFragment {
     @OnClick(R.id.btn_get)
     void click_get() {
         mTestProtocol.text_Get()                            //  (1)
-                .compose(this.<String>bindToLifecycle())    //  (2)
+                .compose(this.<GetModel>bindToLifecycle())    //  (2)
                 .observeOn(AndroidSchedulers.mainThread())  //  (3)
-                .subscribe(new Action1<String>() {          //  (4)
+                .subscribe(new Action1<GetModel>() {          //  (4)
                     @Override
-                    public void call(String data) {         //  (5)
+                    public void call(GetModel data) {         //  (5)
                         tv_reuslt.setText("Get Result:\r\n" + data);
                     }
                 }, new Action1<Throwable>() {
@@ -69,11 +76,11 @@ public class NetFragment extends RxFragment {
         TreeMap<String, Object> params = new TreeMap<>();
         params.put("name", "Zeus");
         mTestProtocol.text_Post(params)
-                .compose(this.<String>bindToLifecycle())
+                .compose(this.<PostModel>bindToLifecycle())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
+                .subscribe(new Action1<PostModel>() {
                     @Override
-                    public void call(String s) {
+                    public void call(PostModel s) {
                         tv_reuslt.setText("Post Result:\r\n" + s);
                     }
                 }, new Action1<Throwable>() {
@@ -89,11 +96,11 @@ public class NetFragment extends RxFragment {
         TreeMap<String, Object> params = new TreeMap<>();
         params.put("name", "Zeus");
         mTestProtocol.text_Put(params)
-                .compose(this.<String>bindToLifecycle())
+                .compose(this.<PutModel>bindToLifecycle())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
+                .subscribe(new Action1<PutModel>() {
                     @Override
-                    public void call(String data) {
+                    public void call(PutModel data) {
                         tv_reuslt.setText("Put Result:\r\n" + data);
                     }
                 }, new Action1<Throwable>() {
@@ -107,11 +114,11 @@ public class NetFragment extends RxFragment {
     @OnClick(R.id.btn_delete)
     void click_delete() {
         mTestProtocol.text_Delete()
-                .compose(this.<String>bindToLifecycle())
+                .compose(this.<DeleteModel>bindToLifecycle())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
+                .subscribe(new Action1<DeleteModel>() {
                     @Override
-                    public void call(String data) {
+                    public void call(DeleteModel data) {
                         tv_reuslt.setText("Delete Result:\r\n" + data);
                     }
                 }, new Action1<Throwable>() {
@@ -121,4 +128,5 @@ public class NetFragment extends RxFragment {
                     }
                 });
     }
+
 }

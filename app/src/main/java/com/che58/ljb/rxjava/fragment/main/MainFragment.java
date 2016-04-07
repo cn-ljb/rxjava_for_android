@@ -12,6 +12,7 @@ import com.che58.ljb.rxjava.fragment.BufferFragment;
 import com.che58.ljb.rxjava.fragment.CheckBoxUpdateFragment;
 import com.che58.ljb.rxjava.fragment.LoopFragment;
 import com.che58.ljb.rxjava.fragment.MergeFragment;
+import com.che58.ljb.rxjava.fragment.Net2Fragment;
 import com.che58.ljb.rxjava.fragment.PublishSubjectFragment;
 import com.che58.ljb.rxjava.fragment.TimerFragment;
 import com.che58.ljb.rxjava.fragment.ZipFragment;
@@ -42,6 +43,10 @@ public class MainFragment extends Fragment {
         open(new NetFragment());
     }
 
+    @OnClick(R.id.btn_net2)
+    void btn_net2() {
+        open(new Net2Fragment());
+    }
 
     @OnClick(R.id.btn_not_more_click)
     void btn_not_more_click() {

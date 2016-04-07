@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">RxJava_For_Android</string>
     <string name="btn_net_request">网络请求(rxjava+okHttp)</string>
+    <string name="btn_net_request2">网络请求(rxjava+okHttp+Gson)</string>
     <string name="request_get">Get请求</string>
     <string name="request_post">Post请求</string>
     <string name="request_put">Put请求</string>
     <string name="request_delete">Delete请求</string>
     <string name="btn_not_more_click">View防止连续点击</string>
     <string name="des_demo_net">RxJava+OkHttp实现的网络请求Demo</string>
+    <string name="des_demo_net2">RxJava+OkHttp+Gson实现的网络请求Demo</string>
     <string name="des_demo_not_more_click">防止连续点击多次触发View的点击事件Demo,3秒内按钮只能点击1次</string>
     <string name="click">点击</string>
     <string name="btn_checkbox_state_update">check_box状态实时跟新</string>
