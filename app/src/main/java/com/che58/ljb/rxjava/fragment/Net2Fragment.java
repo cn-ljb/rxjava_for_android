@@ -53,17 +53,17 @@ public class Net2Fragment extends RxFragment {
 
     @OnClick(R.id.btn_get)
     void click_get() {
-        mTestProtocol.text_Get()                            //  (1)
-                .compose(this.<GetModel>bindToLifecycle())    //  (2)
-                .observeOn(AndroidSchedulers.mainThread())  //  (3)
-                .subscribe(new Action1<GetModel>() {          //  (4)
+        mTestProtocol.text_Get()
+                .compose(this.<GetModel>bindToLifecycle())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<GetModel>() {
                     @Override
-                    public void call(GetModel data) {         //  (5)
+                    public void call(GetModel data) {
                         tv_reuslt.setText("Get Result:\r\n" + data);
                     }
                 }, new Action1<Throwable>() {
                     @Override
-                    public void call(Throwable throwable) { //  (6)
+                    public void call(Throwable throwable) {
                         tv_reuslt.setText("Get Error:\r\n" + throwable.getMessage());
                     }
                 });
