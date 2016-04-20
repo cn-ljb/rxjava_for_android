@@ -38,7 +38,7 @@ public class LoopFragment extends RxFragment {
 
     List<ImageView> mCacheViews = new ArrayList<>();
 
-    private int[] datas = new int[]{R.drawable.pic_1, R.drawable.pic_2, R.drawable.pic_3};
+    private static final int[] DATAS = new int[]{R.drawable.pic_1, R.drawable.pic_2, R.drawable.pic_3};
     private PicLoopAdapter loopAdapter;
     private Subscription subscribe_auto;
 
@@ -90,7 +90,7 @@ public class LoopFragment extends RxFragment {
     }
 
     private void initViewPager() {
-        loopAdapter = new PicLoopAdapter(datas);
+        loopAdapter = new PicLoopAdapter(DATAS);
         mViewPager.setAdapter(loopAdapter);
 
         try {
@@ -107,7 +107,7 @@ public class LoopFragment extends RxFragment {
 
     private class PicLoopAdapter extends PagerAdapter {
 
-        private int[] mDatas;
+        private final int[] mDatas;
 
         public PicLoopAdapter(int[] datas) {
             this.mDatas = datas;
@@ -151,7 +151,7 @@ public class LoopFragment extends RxFragment {
      * 自定义Scroller，用于调节ViewPager滑动速度
      */
     public class ViewPagerScroller extends Scroller {
-        private int mScrollDuration = 1200;// 滑动速度
+        private static final int M_SCROLL_DURATION = 1200;// 滑动速度
 
         public ViewPagerScroller(Context context) {
             super(context);
@@ -167,12 +167,12 @@ public class LoopFragment extends RxFragment {
 
         @Override
         public void startScroll(int startX, int startY, int dx, int dy, int duration) {
-            super.startScroll(startX, startY, dx, dy, mScrollDuration);
+            super.startScroll(startX, startY, dx, dy, M_SCROLL_DURATION);
         }
 
         @Override
         public void startScroll(int startX, int startY, int dx, int dy) {
-            super.startScroll(startX, startY, dx, dy, mScrollDuration);
+            super.startScroll(startX, startY, dx, dy, M_SCROLL_DURATION);
         }
     }
 }

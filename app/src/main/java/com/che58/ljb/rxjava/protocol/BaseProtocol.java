@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.che58.ljb.rxjava.net.XgoHttpClient;
 import com.squareup.okhttp.Request;
 
-import java.util.TreeMap;
+import java.util.Map;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -24,7 +24,7 @@ public abstract class BaseProtocol {
      *  @param method
      *  @param params
      */
-    protected  Observable<String> createObservable(final String url, final String method, final TreeMap<String, Object> params) {
+    protected  Observable<String> createObservable(final String url, final String method, final Map<String, Object> params) {
         return Observable.create(new Observable.OnSubscribe<String>() {                         //  (2)
             @Override
             public void call(Subscriber<? super String> subscriber) {
