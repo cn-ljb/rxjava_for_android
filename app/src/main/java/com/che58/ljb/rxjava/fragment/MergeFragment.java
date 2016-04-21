@@ -33,6 +33,7 @@ import rx.schedulers.Schedulers;
  * Created by zjh on 2016/3/26.
  */
 public class MergeFragment extends RxFragment {
+    private static final String LOCATION = "location:";
 
     @Bind(R.id.view_load)
     ProgressWheel loadView;
@@ -112,9 +113,9 @@ public class MergeFragment extends RxFragment {
                 }
 
                 List<Contacter> datas = new ArrayList<>();
-                datas.add(new Contacter("location:" + "张三"));
-                datas.add(new Contacter("location:" + "李四"));
-                datas.add(new Contacter("location:" + "王五"));
+                datas.add(new Contacter(LOCATION + "张三"));
+                datas.add(new Contacter(LOCATION + "李四"));
+                datas.add(new Contacter(LOCATION + "王五"));
 
                 subscriber.onNext(datas);
                 subscriber.onCompleted();

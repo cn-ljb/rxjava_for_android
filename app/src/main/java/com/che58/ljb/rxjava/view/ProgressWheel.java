@@ -43,14 +43,14 @@ public class ProgressWheel extends View {
     private static final int BAR_LENGTH = 16;
     private static final int BAR_MAX_LENGTH = 270;
 
-    private boolean fillRadius = false;
+    private boolean fillRadius;
 
-    private double timeStartGrowing = 0;
+    private double timeStartGrowing;
     private double barSpinCycleTime = 460;
-    private float barExtraLength = 0;
+    private float barExtraLength;
     private boolean barGrowingFromFront = true;
 
-    private long pausedTimeWithoutGrowing = 0;
+    private long pausedTimeWithoutGrowing;
     private static final long PAUSE_GROWING_TIME = 200;
 
     //Colors (with defaults)
@@ -69,13 +69,13 @@ public class ProgressWheel extends View {
     private float spinSpeed = 230.0f;
     //private float spinSpeed = 120.0f;
     // The last time the spinner was animated
-    private long lastTimeAnimated = 0;
+    private long lastTimeAnimated;
 
     private boolean linearProgress;
 
-    private float mProgress = 0.0f;
-    private float mTargetProgress = 0.0f;
-    private boolean isSpinning = false;
+    private float mProgress;
+    private float mTargetProgress;
+    private boolean isSpinning;
 
     private ProgressCallback callback;
 
@@ -688,6 +688,18 @@ public class ProgressWheel extends View {
         boolean linearProgress;
         boolean fillRadius;
 
+        //required field that makes Parcelables from a Parcel
+        public static final Creator<WheelSavedState> CREATOR =
+                new Creator<WheelSavedState>() {
+                    public WheelSavedState createFromParcel(Parcel in) {
+                        return new WheelSavedState(in);
+                    }
+
+                    public WheelSavedState[] newArray(int size) {
+                        return new WheelSavedState[size];
+                    }
+                };
+
         WheelSavedState(Parcelable superState) {
             super(superState);
         }
@@ -723,17 +735,6 @@ public class ProgressWheel extends View {
             out.writeByte((byte) (fillRadius ? 1 : 0));
         }
 
-        //required field that makes Parcelables from a Parcel
-        public static final Creator<WheelSavedState> CREATOR =
-                new Creator<WheelSavedState>() {
-                    public WheelSavedState createFromParcel(Parcel in) {
-                        return new WheelSavedState(in);
-                    }
-
-                    public WheelSavedState[] newArray(int size) {
-                        return new WheelSavedState[size];
-                    }
-                };
     }
 
     public interface ProgressCallback {

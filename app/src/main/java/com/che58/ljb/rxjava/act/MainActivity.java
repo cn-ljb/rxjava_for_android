@@ -9,7 +9,7 @@ import com.trello.rxlifecycle.components.support.RxFragmentActivity;
 
 public class MainActivity extends RxFragmentActivity {
 
-    private RxBus _rxBus = null;
+    private RxBus _rxBus;
 
     /**获取RxBus对象*/
     public RxBus getRxBusSingleton() {
