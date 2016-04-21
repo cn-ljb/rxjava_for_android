@@ -6,7 +6,7 @@ import com.che58.ljb.rxjava.net.XgoHttpClient;
 import com.google.gson.Gson;
 import com.squareup.okhttp.Request;
 
-import java.util.TreeMap;
+import java.util.Map;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -32,7 +32,7 @@ public abstract class BaseProtocol {
      * @param method
      * @param params
      */
-    protected <T> Observable<T> createObservable(final String url, final String method, final TreeMap<String, Object> params, final Class<T> clazz) {
+    protected <T> Observable<T> createObservable(final String url, final String method, final Map<String, Object> params, final Class<T> clazz) {
         return Observable.create(new Observable.OnSubscribe<T>() {
             @Override
             public void call(Subscriber<? super T> subscriber) {

@@ -6,7 +6,7 @@ import com.che58.ljb.rxjava.model.PostModel;
 import com.che58.ljb.rxjava.model.PutModel;
 import com.che58.ljb.rxjava.net.XgoHttpClient;
 
-import java.util.TreeMap;
+import java.util.Map;
 
 import rx.Observable;
 
@@ -30,14 +30,14 @@ public class TestProtocol extends BaseProtocol {
     /**
      * Post请求
      */
-    public Observable<PostModel> text_Post(TreeMap<String, Object> params) {
+    public Observable<PostModel> text_Post(Map<String, Object> params) {
         return createObservable(BASE_URL, XgoHttpClient.METHOD_POST, params, PostModel.class);
     }
 
     /**
      * Put请求
      */
-    public Observable<PutModel> text_Put(TreeMap<String, Object> params) {
+    public Observable<PutModel> text_Put(Map<String, Object> params) {
         return createObservable(BASE_URL, XgoHttpClient.METHOD_PUT, params, PutModel.class);
     }
 

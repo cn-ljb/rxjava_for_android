@@ -40,8 +40,8 @@ public class ProgressWheel extends View {
     private int barWidth = 4;
     private int rimWidth = 4;
 
-    private final int barLength = 16;
-    private final int barMaxLength = 270;
+    private static final int BAR_LENGTH = 16;
+    private static final int BAR_MAX_LENGTH = 270;
 
     private boolean fillRadius = false;
 
@@ -51,15 +51,15 @@ public class ProgressWheel extends View {
     private boolean barGrowingFromFront = true;
 
     private long pausedTimeWithoutGrowing = 0;
-    private final long pauseGrowingTime = 200;
+    private static final long PAUSE_GROWING_TIME = 200;
 
     //Colors (with defaults)
     private int barColor = 0xAA000000;
     private int rimColor = 0x00FFFFFF;
 
     //Paints
-    private Paint barPaint = new Paint();
-    private Paint rimPaint = new Paint();
+    private final Paint barPaint = new Paint();
+    private final Paint rimPaint = new Paint();
 
     //Rectangles
     private RectF circleBounds = new RectF();
@@ -288,7 +288,7 @@ public class ProgressWheel extends View {
             lastTimeAnimated = SystemClock.uptimeMillis();
 
             float from = mProgress - 90;
-            float length = barLength + barExtraLength;
+            float length = BAR_LENGTH + barExtraLength;
 
             if (isInEditMode()) {
                 from = 0;
@@ -345,7 +345,7 @@ public class ProgressWheel extends View {
     }
 
     private void updateBarLength(long deltaTimeInMilliSeconds) {
-        if (pausedTimeWithoutGrowing >= pauseGrowingTime) {
+        if (pausedTimeWithoutGrowing >= PAUSE_GROWING_TIME) {
             timeStartGrowing += deltaTimeInMilliSeconds;
 
             if (timeStartGrowing > barSpinCycleTime) {
@@ -359,7 +359,7 @@ public class ProgressWheel extends View {
             }
 
             float distance = (float) Math.cos((timeStartGrowing / barSpinCycleTime + 1) * Math.PI) / 2 + 0.5f;
-            float destLength = (barMaxLength - barLength);
+            float destLength = (BAR_MAX_LENGTH - BAR_LENGTH);
 
             if (barGrowingFromFront) {
                 barExtraLength = distance * destLength;
