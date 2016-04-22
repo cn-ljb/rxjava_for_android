@@ -140,12 +140,12 @@ public class XgoLogInterceptor implements Interceptor {
 
         Connection connection = chain.connection();
         Protocol protocol = connection != null ? connection.getProtocol() : Protocol.HTTP_1_1;
-        String requestStartMessage =
-                "--> " + request.method() + ' ' + request.url() + ' ' + protocol(protocol);
+        StringBuilder requestStartMessage = new StringBuilder();
+        requestStartMessage.append("--> " + request.method() + ' ' + request.url() + ' ' + protocol(protocol));
         if (!logHeaders && hasRequestBody) {
-            requestStartMessage += " (" + requestBody.contentLength() + BYTE_BODY;
+            requestStartMessage.append(" (" + requestBody.contentLength() + BYTE_BODY);
         }
-        logger.log(requestStartMessage);
+        logger.log(requestStartMessage.toString());
 
         if (logHeaders) {
             if (hasRequestBody) {
@@ -241,44 +241,4 @@ public class XgoLogInterceptor implements Interceptor {
         return protocol == Protocol.HTTP_1_0 ? "HTTP/1.0" : "HTTP/1.1";
     }
 
-   /* @Override
-    public Response intercept(Chain chain) throws IOException {
-        Request request = chain.request();
-        long t1 = System.nanoTime();
-        String requestLog = "\t" + request.method() + "::" + request.urlString();
-
-        if (request.method().compareToIgnoreCase("post") == 0) {
-            requestLog = "\n" + requestLog + "\n" + bodyToString(request);
-        }
-        XgoLog.d("request::\n" + requestLog);
-
-        Response response = null;
-        String bodyString = null;
-        try {
-            response = chain.proceed(request);
-            bodyString  = response.body().string();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        long t2 = System.nanoTime();
-
-        XgoLog.d("response::" + (t2 - t1) / 1e6d + "ms\n" + bodyString);
-
-
-        return  response==null ? null :response.newBuilder()
-                .body(ResponseBody.create(response.body().contentType(), bodyString))
-                .build();
-    }
-
-    private static String bodyToString(final Request request) {
-        try {
-            final Request copy = request.newBuilder().build();
-            final Buffer buffer = new Buffer();
-            copy.body().writeTo(buffer);
-            return buffer.readUtf8();
-        } catch (final IOException e) {
-            return "did not work";
-        }
-    }*/
 }

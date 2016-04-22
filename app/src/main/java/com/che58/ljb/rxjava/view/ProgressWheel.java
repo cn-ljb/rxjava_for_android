@@ -67,7 +67,6 @@ public class ProgressWheel extends View {
     //Animation
     //The amount of degrees per second
     private float spinSpeed = 230.0f;
-    //private float spinSpeed = 120.0f;
     // The last time the spinner was animated
     private long lastTimeAnimated;
 
@@ -352,9 +351,7 @@ public class ProgressWheel extends View {
                 // We completed a size change cycle
                 // (growing or shrinking)
                 timeStartGrowing -= barSpinCycleTime;
-                //if(barGrowingFromFront) {
                 pausedTimeWithoutGrowing = 0;
-                //}
                 barGrowingFromFront = !barGrowingFromFront;
             }
 
