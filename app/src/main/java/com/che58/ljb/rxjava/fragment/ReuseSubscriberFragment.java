@@ -60,6 +60,8 @@ public class ReuseSubscriberFragment extends RxFragment {
                     Toast.makeText(getActivity(), "The data from Btn2!", Toast.LENGTH_SHORT).show();
                 }
             }
+        };
+    }
 
     //被观察者1
     @OnClick(R.id.btn1)
