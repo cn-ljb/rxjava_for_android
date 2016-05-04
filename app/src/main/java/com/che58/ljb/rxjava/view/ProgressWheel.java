@@ -673,17 +673,17 @@ public class ProgressWheel extends View {
     }
 
     static class WheelSavedState extends BaseSavedState {
-        float mProgress;
-        float mTargetProgress;
-        boolean isSpinning;
-        float spinSpeed;
-        int barWidth;
-        int barColor;
-        int rimWidth;
-        int rimColor;
-        int circleRadius;
-        boolean linearProgress;
-        boolean fillRadius;
+        private float mProgress;
+        private float mTargetProgress;
+        private boolean isSpinning;
+        private float spinSpeed;
+        private int barWidth;
+        private int barColor;
+        private int rimWidth;
+        private int rimColor;
+        private int circleRadius;
+        private boolean linearProgress;
+        private boolean fillRadius;
 
         //required field that makes Parcelables from a Parcel
         public static final Creator<WheelSavedState> CREATOR =
