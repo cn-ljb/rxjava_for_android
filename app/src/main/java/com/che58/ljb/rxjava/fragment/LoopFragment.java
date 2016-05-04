@@ -36,7 +36,7 @@ public class LoopFragment extends RxFragment {
     @Bind(R.id.viewpager)
     ViewPager mViewPager;
 
-    List<ImageView> mCacheViews = new ArrayList<>();
+    private List<ImageView> mCacheViews = new ArrayList<>();
 
     private static final int[] DATAS = new int[]{R.drawable.pic_1, R.drawable.pic_2, R.drawable.pic_3};
     private PicLoopAdapter loopAdapter;
