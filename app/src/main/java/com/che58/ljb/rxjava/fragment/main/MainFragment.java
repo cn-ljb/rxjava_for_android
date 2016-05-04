@@ -14,6 +14,7 @@ import com.che58.ljb.rxjava.fragment.LoopFragment;
 import com.che58.ljb.rxjava.fragment.MergeFragment;
 import com.che58.ljb.rxjava.fragment.Net2Fragment;
 import com.che58.ljb.rxjava.fragment.PublishSubjectFragment;
+import com.che58.ljb.rxjava.fragment.ReuseSubscriberFragment;
 import com.che58.ljb.rxjava.fragment.TimerFragment;
 import com.che58.ljb.rxjava.fragment.ZipFragment;
 import com.che58.ljb.rxjava.fragment.NetFragment;
@@ -98,6 +99,10 @@ public class MainFragment extends Fragment {
         open(new RxBusDemoFragment());
     }
 
+    @OnClick(R.id.btn_reuse_subscriber)
+    void btn_reuseSubscriber(){
+        open(new ReuseSubscriberFragment());
+    }
     /**
      * 开启新的Fragment
      */

@@ -68,5 +68,10 @@
             style="@style/style_btn"
             android:text="@string/btn_rxbus" />
 
+        <Button
+            android:id="@+id/btn_reuse_subscriber"
+            style="@style/style_btn"
+            android:text="@string/btn_reuse_subscriber" />
+
     </LinearLayout>
 </ScrollView>

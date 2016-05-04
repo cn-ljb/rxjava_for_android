@@ -41,5 +41,9 @@
     <string name="send_bottom">发送给底部Fragment</string>
     <string name="msg_demo_rxbus_1">这是一个通过RxJava实现的RxBus Demo\r\n上下分别为两个Fragment , TopFragment被点击 ， 会通知BottomFragment中的两个监听者，一个监听者负责每次触发显示Tap文本，另一个监听者负责每次点击缓冲1秒统计总点击数，并显示出来</string>
     <string name="btn_rxbus">rxbus</string>
+    <string name="btn_reuse_subscriber">复用订阅者</string>
+    <string name="Observable1">被订阅者1</string>
+    <string name="Observable2">被订阅者2</string>
+    <string name="des_demo_reuse">这是一个演示一个订阅者订阅多个被订阅者Demo</string>
 
 </resources>
