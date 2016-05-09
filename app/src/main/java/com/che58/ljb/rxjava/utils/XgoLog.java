@@ -2,7 +2,7 @@ package com.che58.ljb.rxjava.utils;
 
 import android.util.Log;
 
-public class XgoLog {
+public final class XgoLog {
 
 	/** 是否允许输出log
 	 *  -1：  不允许
@@ -39,6 +39,9 @@ public class XgoLog {
 
 	public static final int LEVEL_ERROR = 5;
 
+	private XgoLog() throws InstantiationException {
+		throw new InstantiationException("This class is not created for instantiation");
+	}
 
 	/** 以级别为v 的形式输出LOG */
 

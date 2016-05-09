@@ -148,16 +148,16 @@ public class XgoHttpClient {
         StringBuilder sb = new StringBuilder(url);
         //has params ?
         if (params.size() > 0) {
-            sb.append("?");
+            sb.append('?');
             Set<Map.Entry<String, Object>> entries = params.entrySet();
             int count = 0;
             for (Map.Entry entry : entries) {
                 count++;
-                sb.append(entry.getKey()).append("=").append(entry.getValue());
+                sb.append(entry.getKey()).append('=').append(entry.getValue());
                 if (count == params.size()) {
                     break;
                 }
-                sb.append("&");
+                sb.append('&');
             }
             url = new String(sb);
         }
