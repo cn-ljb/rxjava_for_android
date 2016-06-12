@@ -1,5 +1,7 @@
 package com.che58.ljb.rxjava.net;
 
+import android.net.Uri;
+
 import com.che58.ljb.rxjava.net.interceptor.XgoLogInterceptor;
 import com.che58.ljb.rxjava.utils.XgoLog;
 import com.squareup.okhttp.Callback;
@@ -53,7 +55,8 @@ public class XgoHttpClient {
     }
 
     /**
-     *  同步模式
+     * 同步模式
+     *
      * @param request
      * @return String(json)
      */
@@ -72,7 +75,8 @@ public class XgoHttpClient {
     }
 
     /**
-     *  异步CallBack模式
+     * 异步CallBack模式
+     *
      * @param request
      * @param responseCallback
      */
@@ -114,7 +118,7 @@ public class XgoHttpClient {
      * 初始化Body类型请求参数
      * init Body type params
      */
-    private RequestBody initRequestBody(Map<String , Object> params) {
+    private RequestBody initRequestBody(Map<String, Object> params) {
         MultipartBuilder bodyBuilder = new MultipartBuilder().type(MultipartBuilder.FORM);
         Set<Map.Entry<String, Object>> entries = params.entrySet();
         for (Map.Entry<String, Object> entry : entries) {
@@ -144,7 +148,7 @@ public class XgoHttpClient {
      * 初始化Get请求参数
      * init Get type params
      */
-    private String initGetRequest(String url, Map<String , Object> params) {
+    private String initGetRequest(String url, Map<String, Object> params) {
         StringBuilder sb = new StringBuilder(url);
         //has params ?
         if (params.size() > 0) {
@@ -153,7 +157,7 @@ public class XgoHttpClient {
             int count = 0;
             for (Map.Entry entry : entries) {
                 count++;
-                sb.append(entry.getKey()).append('=').append(entry.getValue());
+                sb.append(entry.getKey()).append('=').append(Uri.encode(entry.getValue().toString()));
                 if (count == params.size()) {
                     break;
                 }

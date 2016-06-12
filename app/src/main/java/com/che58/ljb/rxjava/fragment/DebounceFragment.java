@@ -64,6 +64,7 @@ public class DebounceFragment extends RxFragment {
     /**
      * 搜索关键字提醒Demo
      */
+
     private void searchKeyWordDemo() {
         RxTextView.textChangeEvents(et_search)
                 .debounce(300, TimeUnit.MILLISECONDS)  //debounce:每次文本更改后有300毫秒的缓冲时间，默认在computation调度器
@@ -92,7 +93,6 @@ public class DebounceFragment extends RxFragment {
                         }
                     }
                 });
-
     }
 
 
@@ -112,7 +112,7 @@ public class DebounceFragment extends RxFragment {
         return new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(DebounceFragment.this.getActivity(), "搜索:"+mAdapter.getItem(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(DebounceFragment.this.getActivity(), "搜索:" + mAdapter.getItem(position), Toast.LENGTH_SHORT).show();
             }
         };
     }
@@ -137,7 +137,7 @@ public class DebounceFragment extends RxFragment {
     }
 
     @OnClick(R.id.iv_x)
-    void clear(){
+    void clear() {
         et_search.setText("");
     }
 }
