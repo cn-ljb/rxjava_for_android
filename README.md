@@ -66,7 +66,7 @@
 
 <br/>以下是本人在工作之余写的Demo
 
-[<b>rxjava-for-android</b>](https://github.com/cn-ljb/rxjava_for_android)    （诺对您有所帮助，还望star）
+[<b>rxjava-for-android</b>](https://github.com/cn-ljb/rxjava_for_android)    
 
 [（一）RxJava在Android网络框架中的使用](http://blog.csdn.net/qq1026291832/article/details/51006059)
 
