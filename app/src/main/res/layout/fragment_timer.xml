@@ -10,10 +10,9 @@
 
     <ImageView
         android:id="@+id/iv_welcome"
-        android:layout_width="400dp"
-        android:layout_height="300dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/pic_2"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:src="@drawable/pic_1"
         android:visibility="gone" />
 
 </LinearLayout>

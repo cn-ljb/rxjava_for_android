@@ -44,9 +44,9 @@
             android:text="@string/btn_zip" />
 
         <Button
-            android:id="@+id/btn_merge"
+            android:id="@+id/btn_concat"
             style="@style/style_btn"
-            android:text="@string/btn_merge" />
+            android:text="@string/btn_concat" />
 
         <Button
             android:id="@+id/btn_loop"
