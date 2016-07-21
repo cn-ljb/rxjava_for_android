@@ -42,7 +42,6 @@ public abstract class BaseProtocol {
     protected  void setData(Subscriber<? super String> subscriber, String json) {
         if (TextUtils.isEmpty(json)) {                          //  (6)
             subscriber.onError(new Throwable("not data"));
-            subscriber.onCompleted();
             return;
         }
         subscriber.onNext(json);                                //  (7)

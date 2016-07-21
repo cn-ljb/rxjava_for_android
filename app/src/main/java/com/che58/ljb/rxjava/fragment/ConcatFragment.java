@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
@@ -34,6 +35,7 @@ import rx.schedulers.Schedulers;
  */
 public class ConcatFragment extends RxFragment {
     private static final String LOCATION = "location:";
+    private static final String NET = "net:";
 
     @Bind(R.id.view_load)
     ProgressWheel loadView;
@@ -55,6 +57,7 @@ public class ConcatFragment extends RxFragment {
         concatDemo();
     }
 
+
     private void concatDemo() {
         Observable.concat(
                 getDataFromLocation(),
@@ -71,6 +74,11 @@ public class ConcatFragment extends RxFragment {
                     @Override
                     public void call(Throwable throwable) {
                         XgoLog.e(throwable.getMessage());
+                    }
+                }, new Action0() {
+                    @Override
+                    public void call() {
+                        XgoLog.d("onCompleted()");
                     }
                 });
     }
@@ -92,11 +100,10 @@ public class ConcatFragment extends RxFragment {
                 }
 
                 ArrayList<Contacter> contacters = new ArrayList<>();
-                contacters.add(new Contacter("net:Zeus"));
-                contacters.add(new Contacter("net:Athena"));
-                contacters.add(new Contacter("net:Prometheus"));
+                contacters.add(new Contacter(NET+"Zeus"));
+                contacters.add(new Contacter(NET+"Athena"));
+                contacters.add(new Contacter(NET + "Prometheus"));
                 subscriber.onNext(contacters);
-                // subscriber.onError(new Throwable("模拟出错"));
                 subscriber.onCompleted();
             }
         });

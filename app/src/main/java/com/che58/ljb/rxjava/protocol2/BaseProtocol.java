@@ -50,7 +50,6 @@ public abstract class BaseProtocol {
     protected <T> void setData(Subscriber<? super T> subscriber, String json, Class<T> clazz) {
         if (TextUtils.isEmpty(json)) {
             subscriber.onError(new Throwable("not data"));
-            subscriber.onCompleted();
             return;
         }
 
