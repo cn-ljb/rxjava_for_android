@@ -92,9 +92,10 @@ public class DebounceFragment extends RxFragment {
                 .switchMap(new Func1<TextViewTextChangeEvent, Observable<List<String>>>() {
                     @Override
                     public Observable<List<String>> call(TextViewTextChangeEvent textViewTextChangeEvent) {
-                        return getKeyWordFormNet(textViewTextChangeEvent.text().toString().trim());
+                        return getKeyWordFormNet(textViewTextChangeEvent.text().toString().trim())
+                                .subscribeOn(Schedulers.io());
                     }
-                }).subscribeOn(Schedulers.io())
+                })
                 .observeOn(AndroidSchedulers.mainThread())  //触发后回到Android主线程调度器
                 .subscribe(new Action1<List<String>>() {
                     @Override
@@ -104,7 +105,7 @@ public class DebounceFragment extends RxFragment {
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-
+                        XgoLog.e("异常："+throwable.getMessage());
                     }
                 });
     }
@@ -140,6 +141,10 @@ public class DebounceFragment extends RxFragment {
         return Observable.create(new Observable.OnSubscribe<List<String>>() {
             @Override
             public void call(Subscriber<? super List<String>> subscriber) {
+
+                boolean b = Thread.currentThread() == Looper.getMainLooper().getThread();
+                XgoLog.d("IO线程::" + !b);
+
                 SystemClock.sleep(1000);
                 //这里是网络请求操作...
                 List<String> datas = new ArrayList<>();
