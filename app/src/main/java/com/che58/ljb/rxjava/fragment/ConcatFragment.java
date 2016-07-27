@@ -24,12 +24,13 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
 import rx.functions.Action1;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
  * contact操作符
  * 可以将多个Observables的输出合并，就好像它们是一个单个的Observable一样
- * <p>
+ * <p/>
  * Demo:模拟先读取(1s)本地缓存数据，再读取(3s)网络数据
  * Created by zjh on 2016/3/26.
  */
@@ -100,9 +101,10 @@ public class ConcatFragment extends RxFragment {
                 }
 
                 ArrayList<Contacter> contacters = new ArrayList<>();
-                contacters.add(new Contacter(NET+"Zeus"));
-                contacters.add(new Contacter(NET+"Athena"));
+                contacters.add(new Contacter(NET + "Zeus"));
+                contacters.add(new Contacter(NET + "Athena"));
                 contacters.add(new Contacter(NET + "Prometheus"));
+               // subscriber.onError(new Throwable("模拟出错"));
                 subscriber.onNext(contacters);
                 subscriber.onCompleted();
             }

@@ -1,6 +1,8 @@
 package com.che58.ljb.rxjava.fragment;
 
 import android.os.Bundle;
+import android.os.Looper;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.che58.ljb.rxjava.R;
+import com.che58.ljb.rxjava.utils.XgoLog;
 import com.jakewharton.rxbinding.widget.RxTextView;
 import com.jakewharton.rxbinding.widget.TextViewTextChangeEvent;
 import com.trello.rxlifecycle.components.support.RxFragment;
@@ -29,6 +32,7 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -66,37 +70,48 @@ public class DebounceFragment extends RxFragment {
      */
 
     private void searchKeyWordDemo() {
+
         RxTextView.textChangeEvents(et_search)
                 .debounce(300, TimeUnit.MILLISECONDS)  //debounce:每次文本更改后有300毫秒的缓冲时间，默认在computation调度器
-                .observeOn(AndroidSchedulers.mainThread())  //触发后回到Android主线程调度器
-                .subscribe(new Action1<TextViewTextChangeEvent>() {
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .filter(new Func1<TextViewTextChangeEvent, Boolean>() {
                     @Override
-                    public void call(TextViewTextChangeEvent textViewTextChangeEvent) {
-                        String key = textViewTextChangeEvent.text().toString().trim();
-                        if (TextUtils.isEmpty(key)) {
-                            iv_x.setVisibility(View.GONE);
-                            if (mAdapter != null) {
-                                mAdapter.clear();
-                                mAdapter.notifyDataSetChanged();
-                            }
-                        } else {
-                            iv_x.setVisibility(View.VISIBLE);
-                            getKeyWordFormNet(key)
-                                    .subscribeOn(Schedulers.io())
-                                    .observeOn(AndroidSchedulers.mainThread())
-                                    .subscribe(new Action1<List<String>>() {
-                                        @Override
-                                        public void call(List<String> strings) {
-                                            initPage(strings);
-                                        }
-                                    });
+                    public Boolean call(TextViewTextChangeEvent textViewTextChangeEvent) {
+                        boolean filter = !TextUtils.isEmpty(textViewTextChangeEvent.text());
+                        if (!filter && mAdapter != null) {
+                            //操作UI，这里必须在主线程完成
+                            boolean b = Thread.currentThread() == Looper.getMainLooper().getThread();
+                            XgoLog.d("清空::" + b);
+                            mAdapter.clear();
+                            mAdapter.notifyDataSetChanged();
                         }
+                        return filter;
+                    }
+                })
+                .switchMap(new Func1<TextViewTextChangeEvent, Observable<List<String>>>() {
+                    @Override
+                    public Observable<List<String>> call(TextViewTextChangeEvent textViewTextChangeEvent) {
+                        return getKeyWordFormNet(textViewTextChangeEvent.text().toString().trim());
+                    }
+                }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())  //触发后回到Android主线程调度器
+                .subscribe(new Action1<List<String>>() {
+                    @Override
+                    public void call(List<String> strings) {
+                        initPage(strings);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+
                     }
                 });
     }
 
 
     private void initPage(List<String> keyWords) {
+        XgoLog.d("data::"+keyWords.toString());
         if (mAdapter == null) {
             mAdapter = new ArrayAdapter<>(getActivity(), R.layout.item_list, R.id.tv_text, keyWords);
             lv_list.setAdapter(mAdapter);
@@ -125,6 +140,7 @@ public class DebounceFragment extends RxFragment {
         return Observable.create(new Observable.OnSubscribe<List<String>>() {
             @Override
             public void call(Subscriber<? super List<String>> subscriber) {
+                SystemClock.sleep(1000);
                 //这里是网络请求操作...
                 List<String> datas = new ArrayList<>();
                 for (int i = 0; i < 10; i++) {
