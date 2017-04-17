@@ -26,7 +26,7 @@
         首先请调节好学习心态，RxJava并不是一个"拿来就能用"的项目，他需要我们像学习门新语言一样从语法-->词汇-->用法的学习过程，我们需要做的只是摆好心态，耐心的学习。
     
 <br/><br/><br/>
-###一、入门
+### 一、入门
    如果你还没有接触过RxJava，下面这些文章可能会帮到你：
    
  [给 Android 开发者的 RxJava 详解 ](http://gank.io/post/560e15be2dca930e00da1083) ——扔物线   对RxJava的概念以及基本特性做了详细介绍
@@ -50,7 +50,7 @@
    ——作者：Yaroslav Heriatovych  译者：Rocko  
 
 <br/><br/><br/>
-###二、进阶
+### 二、进阶
 如果你已了解RxJava基本语法，并尝试着去练习，那么现在你需要熟悉更多的操作符，并理解它们的意思，在特定的场合使用它们去编写代码。
 
 操作符介绍：[ReactiveX中文翻译文档](https://mcxiaoke.gitbooks.io/rxdocs/content/index.html)
@@ -89,7 +89,7 @@
 [（十）【续】网络层（RxJava+OkHttp+Gson）](http://blog.csdn.net/qq1026291832/article/details/51084960)
 
 <br/><br/><br/>
-###三、 其他可能对你有所帮助的资料
+### 三、 其他可能对你有所帮助的资料
 
 [那些年我们错过的响应式编程](http://www.devtf.cn/?p=174)        ——很详细的介绍什么是响应式编程
 
@@ -99,7 +99,7 @@
 
 [Awesome-RxJava](https://github.com/lzyzsd/Awesome-RxJava)               ——hi大头鬼hi     RxJava资源的总结分享
     
-#####值得一读的文章：
+##### 值得一读的文章：
 
 [给创业码农的话--如何提升开发效率](http://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=400785752&idx=1&sn=e1c166e7fad0892811c9ca9bca6d1540&scene=23&srcid=0329Nz6yhFIZKbW9emQgjUlM#rd)
 
@@ -110,7 +110,7 @@
 [zjutkz's blog](http://zjutkz.net/archives/ "http://zjutkz.net/archives/")
 
 <br/><br/><br/>
-###四、学习中可能会涉及到的库
+### 四、学习中可能会涉及到的库
 <a>https://github.com/ReactiveX/RxJava</a>          ——RxJava核心库
 
 <a>https://github.com/ReactiveX/RxAndroid</a>        ——RxJava在Android中使用的扩展库
