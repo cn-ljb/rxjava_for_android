@@ -31,8 +31,8 @@ public class PublishSubjectFragment extends RxFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         PublishSubject<String> publishSubject = PublishSubject.create();
+        //不建议直接在构造方法里传递参数，我这里只是为了方便演示
         PublishSubjectTopFragment topFragment = new PublishSubjectTopFragment(publishSubject);
         PublishSubjectBottomFragment bottom_Fragment = new PublishSubjectBottomFragment(publishSubject);
         getActivity().getSupportFragmentManager()

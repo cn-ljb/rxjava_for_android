@@ -10,6 +10,7 @@
 
     <!-- 按钮Style -->
     <style name="style_btn">
+        <item name="android:textAllCaps">false</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:layout_margin">5dp</item>

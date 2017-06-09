@@ -16,37 +16,35 @@ import rx.Observable;
  */
 public class TestProtocol extends BaseProtocol {
 
-    private static final String BASE_URL = "http://service.test.xgo.com.cn:8080/app/v1/demo/";
+    private static final String URL = "http://integer.wang/init/json.shtml";
 
     /**
      * Get请求
      */
-    public Observable<GetModel> text_Get() {
-        String path = "1";
-        return createObservable(BASE_URL + path, XgoHttpClient.METHOD_GET, null, GetModel.class);
+    public Observable<GetModel> testGet() {
+        return createObservable(URL, XgoHttpClient.METHOD_GET, null, GetModel.class);
     }
 
 
     /**
      * Post请求
      */
-    public Observable<PostModel> text_Post(Map<String, Object> params) {
-        return createObservable(BASE_URL, XgoHttpClient.METHOD_POST, params, PostModel.class);
+    public Observable<PostModel> testPost(Map<String, Object> params) {
+        return createObservable(URL, XgoHttpClient.METHOD_POST, params, PostModel.class);
     }
 
     /**
      * Put请求
      */
-    public Observable<PutModel> text_Put(Map<String, Object> params) {
-        return createObservable(BASE_URL, XgoHttpClient.METHOD_PUT, params, PutModel.class);
+    public Observable<PutModel> testPut(Map<String, Object> params) {
+        return createObservable(URL, XgoHttpClient.METHOD_PUT, params, PutModel.class);
     }
 
     /**
      * Delete请求
      */
-    public Observable<DeleteModel> text_Delete() {
-        String path = "1";
-        return createObservable(BASE_URL + path, XgoHttpClient.METHOD_DELETE, null, DeleteModel.class);
+    public Observable<DeleteModel> testDelete() {
+        return createObservable(URL, XgoHttpClient.METHOD_DELETE, null, DeleteModel.class);
     }
 
 }

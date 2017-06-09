@@ -46,7 +46,7 @@ public class NetFragment extends RxFragment {
 
     @OnClick(R.id.btn_get)
     void click_get() {
-        mTestProtocol.text_Get()                            //  (1)
+        mTestProtocol.testGet()                            //  (1)
                 .compose(this.<String>bindToLifecycle())    //  (2)
                 .observeOn(AndroidSchedulers.mainThread())  //  (3)
                 .subscribe(new Action1<String>() {          //  (4)
@@ -68,7 +68,7 @@ public class NetFragment extends RxFragment {
     void click_post() {
         TreeMap<String, Object> params = new TreeMap<>();
         params.put("name", "Zeus");
-        mTestProtocol.text_Post(params)
+        mTestProtocol.testPost(params)
                 .compose(this.<String>bindToLifecycle())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<String>() {
@@ -88,7 +88,7 @@ public class NetFragment extends RxFragment {
     void click_put() {
         TreeMap<String, Object> params = new TreeMap<>();
         params.put("name", "Zeus");
-        mTestProtocol.text_Put(params)
+        mTestProtocol.testPut(params)
                 .compose(this.<String>bindToLifecycle())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<String>() {
@@ -106,7 +106,7 @@ public class NetFragment extends RxFragment {
 
     @OnClick(R.id.btn_delete)
     void click_delete() {
-        mTestProtocol.text_Delete()
+        mTestProtocol.testDelete()
                 .compose(this.<String>bindToLifecycle())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<String>() {

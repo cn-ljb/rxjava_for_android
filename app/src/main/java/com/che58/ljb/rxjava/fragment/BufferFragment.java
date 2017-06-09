@@ -78,7 +78,7 @@ public class BufferFragment extends RxFragment {
             chs[i] = cs[i];
         }
 
-         Observable.from(chs)
+        Observable.from(chs)
                 .buffer(2, 3)
                 .compose(this.<List<Character>>bindToLifecycle())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -89,6 +89,7 @@ public class BufferFragment extends RxFragment {
                         tv_output.setText(tv_output.getText() + characters.toString());
                     }
                 });
+
 
     }
 

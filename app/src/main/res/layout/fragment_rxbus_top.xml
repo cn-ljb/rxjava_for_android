@@ -15,7 +15,7 @@
         />
 
     <Button
-        android:id="@+id/btn_demo_rxbus_tap"
+        android:id="@+id/btn_demo_rxbus_top"
         android:background="@drawable/btn_round"
         android:layout_gravity="center"
         android:layout_height="90dp"

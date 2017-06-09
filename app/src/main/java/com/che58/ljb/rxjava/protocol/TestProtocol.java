@@ -12,37 +12,35 @@ import rx.Observable;
  */
 public class TestProtocol extends BaseProtocol {
 
-    private static final String BASE_URL = "http://service.test.xgo.com.cn:8080/app/v1/demo/";
+    private static final String URL = "http://integer.wang/init/json.shtml";
 
     /**
      * Get请求
      */
-    public Observable<String> text_Get() {
-        String path = "1";
-        return createObservable(BASE_URL + path, XgoHttpClient.METHOD_GET, null);   // (1)
+    public Observable<String> testGet() {
+        return createObservable(URL, XgoHttpClient.METHOD_GET, null);   // (1)
     }
 
 
     /**
      * Post请求
      */
-    public Observable<String> text_Post(Map<String , Object> params) {
-        return createObservable(BASE_URL, XgoHttpClient.METHOD_POST, params);
+    public Observable<String> testPost(Map<String , Object> params) {
+        return createObservable(URL, XgoHttpClient.METHOD_POST, params);
     }
 
     /**
      * Put请求
      */
-    public Observable<String> text_Put(Map<String , Object> params) {
-        return createObservable(BASE_URL, XgoHttpClient.METHOD_PUT, params);
+    public Observable<String> testPut(Map<String , Object> params) {
+        return createObservable(URL, XgoHttpClient.METHOD_PUT, params);
     }
 
     /**
      * Delete请求
      */
-    public Observable<String> text_Delete() {
-        String path = "1";
-        return createObservable(BASE_URL+path, XgoHttpClient.METHOD_DELETE, null);
+    public Observable<String> testDelete() {
+        return createObservable(URL, XgoHttpClient.METHOD_DELETE, null);
     }
 
 }

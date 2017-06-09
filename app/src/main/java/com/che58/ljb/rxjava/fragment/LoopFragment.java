@@ -36,8 +36,6 @@ public class LoopFragment extends RxFragment {
     @Bind(R.id.viewpager)
     ViewPager mViewPager;
 
-    private List<ImageView> mCacheViews = new ArrayList<>();
-
     private static final int[] DATAS = new int[]{R.drawable.pic_1, R.drawable.pic_2, R.drawable.pic_3};
     private PicLoopAdapter loopAdapter;
     private Subscription subscribe_auto;
@@ -55,6 +53,13 @@ public class LoopFragment extends RxFragment {
         super.onActivityCreated(savedInstanceState);
         initViewPager();
         startLoop();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopLoop();
     }
 
     @OnClick(R.id.btn_start_loop)
@@ -108,6 +113,7 @@ public class LoopFragment extends RxFragment {
     private class PicLoopAdapter extends PagerAdapter {
 
         private final int[] mDatas;
+        private List<ImageView> mCacheViews = new ArrayList<>();
 
         public PicLoopAdapter(int[] datas) {
             this.mDatas = datas;

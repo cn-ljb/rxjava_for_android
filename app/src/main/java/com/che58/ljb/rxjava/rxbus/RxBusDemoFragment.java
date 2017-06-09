@@ -17,9 +17,7 @@ import butterknife.ButterKnife;
 public class RxBusDemoFragment extends RxFragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_rxbus_demo, container, false);
         ButterKnife.bind(this, layout);
         return layout;

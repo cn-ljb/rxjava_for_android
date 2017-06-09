@@ -29,10 +29,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class XgoHttpClient {
 
-    public static String METHOD_GET = "GET";
-    public static String METHOD_POST = "POST";
-    public static String METHOD_PUT = "PUT";
-    public static String METHOD_DELETE = "DELETE";
+    public static final String METHOD_GET = "GET";
+    public static final String METHOD_POST = "POST";
+    public static final String METHOD_PUT = "PUT";
+    public static final String METHOD_DELETE = "DELETE";
 
     private static final XgoHttpClient mClient = new XgoHttpClient();
     private static final OkHttpClient mOkHttpClient = new OkHttpClient();

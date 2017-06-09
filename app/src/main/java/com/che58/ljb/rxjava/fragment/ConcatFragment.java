@@ -24,7 +24,6 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
 import rx.functions.Action1;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -82,6 +81,7 @@ public class ConcatFragment extends RxFragment {
                         XgoLog.d("onCompleted()");
                     }
                 });
+
     }
 
     private void initPage(List<Contacter> contacters) {

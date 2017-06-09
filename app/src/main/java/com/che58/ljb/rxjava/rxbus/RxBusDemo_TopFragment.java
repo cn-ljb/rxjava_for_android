@@ -35,7 +35,7 @@ public class RxBusDemo_TopFragment extends RxFragment {
         _rxBus = ((MainActivity) getActivity()).getRxBusSingleton();
     }
 
-    @OnClick(R.id.btn_demo_rxbus_tap)
+    @OnClick(R.id.btn_demo_rxbus_top)
     public void onTapButtonClicked() {
         if (_rxBus.hasObservers()) {    //是否有观察者，有，则发送一个事件
             _rxBus.send(new RxBusDemoFragment.TapEvent());

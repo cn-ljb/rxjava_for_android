@@ -12,6 +12,7 @@ import com.trello.rxlifecycle.components.support.RxFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import rx.Subscription;
 import rx.functions.Action1;
 import rx.subjects.PublishSubject;
 
@@ -25,6 +26,7 @@ public class PublishSubjectBottomFragment extends RxFragment {
     TextView tv_result;
 
     private final PublishSubject<String> publishSubject;
+    private Subscription mSubscribe;
 
     public PublishSubjectBottomFragment(PublishSubject<String> publishSubject) {
         this.publishSubject = publishSubject;
@@ -45,11 +47,19 @@ public class PublishSubjectBottomFragment extends RxFragment {
     }
 
     private void initData() {
-        publishSubject.subscribe(new Action1<String>() {
+        mSubscribe = publishSubject.subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
                 tv_result.setText(s);
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mSubscribe != null && !mSubscribe.isUnsubscribed()) {
+            mSubscribe.unsubscribe();
+        }
     }
 }

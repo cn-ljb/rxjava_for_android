@@ -52,21 +52,19 @@ public class RxBusDemo_Bottom3Fragment extends RxFragment {
         super.onStart();
 
         //将普通的Observable转换为可连接的Observable
-        ConnectableObservable<Object> tapEventEmitter = _rxBus.toObserverable().publish();
+        ConnectableObservable<Object> publish = _rxBus.toObserverable().publish();
 
-        tapEventEmitter
-                .compose(this.bindToLifecycle())
+        publish.compose(this.bindToLifecycle())
                 .subscribe(new Action1<Object>() { //一个一旦被触发就会显示TapText的监听者
-            @Override
-            public void call(Object event) {
-                if (event instanceof RxBusDemoFragment.TapEvent) {
-                    _showTapText();
-                }
-            }
-        });
+                    @Override
+                    public void call(Object event) {
+                        if (event instanceof RxBusDemoFragment.TapEvent) {
+                            _showTapText();
+                        }
+                    }
+                });
 
-        tapEventEmitter
-                .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
+        publish.compose(this.bindUntilEvent(FragmentEvent.DESTROY))
                 .publish(new Func1<Observable<Object>, Observable<List<Object>>>() {//一个出发后缓存一秒内的点击数并显示的监听者
                     @Override
                     public Observable<List<Object>> call(Observable<Object> stream) {
@@ -79,7 +77,7 @@ public class RxBusDemo_Bottom3Fragment extends RxFragment {
             }
         });
 
-        tapEventEmitter.connect();  //可连接的Observable并不在订阅时触发，而需手动调用connect()方法
+        publish.connect();  //可连接的Observable并不在订阅时触发，而需手动调用connect()方法
     }
 
     @Override
@@ -96,7 +94,7 @@ public class RxBusDemo_Bottom3Fragment extends RxFragment {
     private void _showTapText() {
         _tapEventTxtShow.setVisibility(View.VISIBLE);
         _tapEventTxtShow.setAlpha(1f);
-        ViewCompat.animate(_tapEventTxtShow).alphaBy(-1f).setDuration(400);
+        ViewCompat.animate(_tapEventTxtShow).alphaBy(-1f).setDuration(400).start();
     }
 
     private void _showTapCount(int size) {

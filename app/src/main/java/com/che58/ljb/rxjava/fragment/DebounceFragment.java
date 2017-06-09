@@ -72,28 +72,24 @@ public class DebounceFragment extends RxFragment {
     private void searchKeyWordDemo() {
 
         RxTextView.textChangeEvents(et_search)
-                .debounce(300, TimeUnit.MILLISECONDS)  //debounce:每次文本更改后有300毫秒的缓冲时间，默认在computation调度器
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .debounce(150, TimeUnit.MILLISECONDS)  //debounce:每次文本更改后有150毫秒的缓冲时间，默认在computation调度器
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(new Action1<TextViewTextChangeEvent>() {
+                    @Override
+                    public void call(TextViewTextChangeEvent textViewTextChangeEvent) {
+                        clearPage(textViewTextChangeEvent);
+                    }
+                })
                 .filter(new Func1<TextViewTextChangeEvent, Boolean>() {
                     @Override
                     public Boolean call(TextViewTextChangeEvent textViewTextChangeEvent) {
-                        boolean filter = !TextUtils.isEmpty(textViewTextChangeEvent.text());
-                        if (!filter && mAdapter != null) {
-                            //操作UI，这里必须在主线程完成
-                            boolean b = Thread.currentThread() == Looper.getMainLooper().getThread();
-                            XgoLog.d("清空::" + b);
-                            mAdapter.clear();
-                            mAdapter.notifyDataSetChanged();
-                        }
-                        return filter;
+                        return !TextUtils.isEmpty(textViewTextChangeEvent.text());
                     }
                 })
                 .switchMap(new Func1<TextViewTextChangeEvent, Observable<List<String>>>() {
                     @Override
                     public Observable<List<String>> call(TextViewTextChangeEvent textViewTextChangeEvent) {
-                        return getKeyWordFormNet(textViewTextChangeEvent.text().toString().trim())
-                                .subscribeOn(Schedulers.io());
+                        return getKeyWordFormNet(textViewTextChangeEvent.text().toString().trim()).subscribeOn(Schedulers.io());
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())  //触发后回到Android主线程调度器
@@ -105,14 +101,22 @@ public class DebounceFragment extends RxFragment {
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        XgoLog.e("异常："+throwable.getMessage());
+                        throwable.printStackTrace();
                     }
                 });
     }
 
+    private void clearPage(TextViewTextChangeEvent event) {
+        String text = event.text().toString().trim();
+        if (mAdapter != null && TextUtils.isEmpty(text)) {
+            mAdapter.clear();
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
 
     private void initPage(List<String> keyWords) {
-        XgoLog.d("data::"+keyWords.toString());
+        XgoLog.d("data::" + keyWords.toString());
         if (mAdapter == null) {
             mAdapter = new ArrayAdapter<>(getActivity(), R.layout.item_list, R.id.tv_text, keyWords);
             lv_list.setAdapter(mAdapter);
@@ -145,7 +149,7 @@ public class DebounceFragment extends RxFragment {
                 boolean b = Thread.currentThread() == Looper.getMainLooper().getThread();
                 XgoLog.d("IO线程::" + !b);
 
-                SystemClock.sleep(1000);
+                SystemClock.sleep(500);
                 //这里是网络请求操作...
                 List<String> datas = new ArrayList<>();
                 for (int i = 0; i < 10; i++) {

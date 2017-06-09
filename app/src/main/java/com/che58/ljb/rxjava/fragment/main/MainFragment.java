@@ -107,7 +107,7 @@ public class MainFragment extends Fragment {
      * 开启新的Fragment
      */
     private void open(Fragment fragment) {
-        final String tag = fragment.getClass().toString();
+        final String tag = fragment.getClass().getName();
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .addToBackStack(tag)
