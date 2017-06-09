@@ -1,5 +1,8 @@
 # rxjava_for_android
 
+Kotlin版本：[https://github.com/cn-ljb/rxjava_for_kotlin](https://github.com/cn-ljb/rxjava_for_kotlin)
+
+
 	Android平台上使用RxJava的Demo
 	
 	感谢DevFactory的Mohamed Ezzat对代码的优化和建议
@@ -12,9 +15,6 @@
 
 <center>...</center>
 -----------------------------------------------------------
-
-
-[博客首页](http://blog.csdn.net/qq1026291832/article/details/51007490 "博客首页")
 
 	1、Rxjava是什么（异步库、响应式编程）
       	 一个使用Java语言基于观察者模式拓展而来的高效异步库。
