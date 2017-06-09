@@ -1,6 +1,6 @@
 # rxjava_for_android
 
-Kotlin版本：[https://github.com/cn-ljb/rxjava_for_kotlin](https://github.com/cn-ljb/rxjava_for_kotlin)
+**Kotlin版本：**[https://github.com/cn-ljb/rxjava_for_kotlin](https://github.com/cn-ljb/rxjava_for_kotlin)
 
 
 	Android平台上使用RxJava的Demo
